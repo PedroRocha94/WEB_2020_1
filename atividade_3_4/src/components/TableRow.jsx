@@ -10,8 +10,9 @@ export default class TableRow extends Component{
     }
 
     apagar(){
-        Axios.delete('http://localhost:3001/Disciplina/' + this.props.Disciplina.id)
-        .then(res=>this.props.apagarElementoPorId(this.props.Disciplina.id))
+        Axios.delete('http://localhost:3002/disciplinas/delete/' + this.props.Disciplina._id) // conexão com express
+        //Axios.delete('http://localhost:3001/Disciplina/' + this.props.Disciplina.id) // conexão com json-server
+        .then(res=>this.props.apagarElementoPorId(this.props.Disciplina._id))
         .catch(error=>console.log(error))
     }
 
@@ -19,7 +20,7 @@ export default class TableRow extends Component{
         return(
             <tr>
                 <td>
-                    {this.props.Disciplina.id}
+                    {this.props.Disciplina._id}
                 </td>
                 <td>
                     {this.props.Disciplina.nome}
@@ -31,7 +32,7 @@ export default class TableRow extends Component{
                     {this.props.Disciplina.capacidade}
                 </td>
                 <td style={{texteAling: "center"}}>
-                    <Link to={"/edit/" + this.props.Disciplina.id} className='btn btn-primary'>Editar</Link>
+                    <Link to={"/edit/" + this.props.Disciplina._id} className='btn btn-primary'>Editar</Link>
                 </td>
                 <td style={{texteAling: "center"}}>
                     <button onClick={this.apagar} className='btn btn-danger'>Apagar</button>

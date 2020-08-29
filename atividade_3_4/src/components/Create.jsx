@@ -32,10 +32,11 @@ export default class Create extends Component{
         console.log('Capacidade: ' + this.state.capacidade)*/
 
         const novaDisciplina = {nome:this.state.nome, curso:this.state.curso, capacidade:this.state.capacidade}
-        Axios.post('http://localhost:3001/Disciplina', novaDisciplina)
+        Axios.post('http://localhost:3002/disciplinas/register', novaDisciplina) // express
+        //Axios.post('http://localhost:3001/Disciplina', novaDisciplina) //json-server
         .then(
             (res)=>{
-                console.log('Disciplina criada com sucesso!')
+                console.log('Disciplina ' + res.data._id + 'criada com sucesso!')
             }
         )
         .catch(

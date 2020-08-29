@@ -1,8 +1,12 @@
 const DisciplinaModel = require('../models/DisciplinaModel')
 const e = require('express')
 
-let Disciplinas = []
-let _id = 0
+let Disciplinas = [
+    {_id: 0, nome: 'Estruturas de dados', curso: 'SI', capacidade: 40},
+    {_id: 1, nome: 'Sistemas de Informação', curso: 'SI', capacidade: 40},
+    {_id: 2, nome: 'GPN', curso: 'SI', capacidade: 40}
+]
+let _id = 3
 
 class DisciplinaService{
 
@@ -27,9 +31,11 @@ class DisciplinaService{
                 d.nome = data.nome
                 d.curso = data.curso
                 d.capacidade = data.capacidade
+                return d
             }
-            return d
+            
         }
+        
         return null
     }
 
