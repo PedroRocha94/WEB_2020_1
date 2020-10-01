@@ -1,0 +1,28 @@
+{
+  "Disciplina": [
+    {
+      "nome": "Estrutura de Dados",
+      "curso": "Sistemas de Informação",
+      "capacidade": "40",
+      "id": 1
+    },
+    {
+      "nome": "Jogos Digitais",
+      "curso": "Design Digital",
+      "capacidade": "30",
+      "id": 2
+    },
+    {
+      "nome": "Requisitos de Software",
+      "curso": "Engenharia de Software",
+      "capacidade": "50",
+      "id": 3
+    },
+    {
+      "nome": "Fundamentos de Programação",
+      "curso": "Redes de Computadores",
+      "capacidade": "50",
+      "id": 4
+    }
+  ]
+}
