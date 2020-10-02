@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TableRow from './TableRow'
 import FirebaseContext from '../utils/FirebaseContext'
+import FirebaseServices from '../services/FirebaseService'
 
 const ListPage = () => (
     <FirebaseContext.Consumer>
@@ -12,32 +13,26 @@ const ListPage = () => (
 class List extends Component {
     constructor(props) {
         super(props)
+        this._isMounted = false
         this.state = { Disciplina: [], loading: false }
         this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
     }
 
     componentDidMount() {
+        this._isMounted = true
         this.setState({loading: true})
-        this.ref = this.props.firebase.getFirestore().collection('disciplinas')
-        this.ref.onSnapshot(this.alimentarDisciplinas.bind(this))
+        FirebaseServices.list(this.props.firebase.getFirestore(), 
+        (disciplinas)=>{
+            if(disciplinas){
+                if(this._isMounted){
+                    this.setState({disciplinas:disciplinas, loading:false})
+                }
+            }
+        })
     }
 
-    alimentarDisciplinas(query) {
-        let disciplinas = []
-        query.forEach(
-            (doc) => {
-                const { nome, curso, capacidade } = doc.data()
-                disciplinas.push(
-                    {
-                        _id: doc.id,
-                        nome,
-                        curso,
-                        capacidade,
-                    }
-                )
-            }
-        )
-        this.setState({ disciplinas: disciplinas, loading: false })
+    componentWillUnmount(){
+        this._isMounted = false
     }
 
     montarTabela() {
