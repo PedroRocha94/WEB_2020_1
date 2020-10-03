@@ -25,7 +25,7 @@ class List extends Component {
         (disciplinas)=>{
             if(disciplinas){
                 if(this._isMounted){
-                    this.setState({disciplinas:disciplinas, loading:false})
+                    this.setState({Disciplina:disciplinas, loading:false})
                 }
             }
         })

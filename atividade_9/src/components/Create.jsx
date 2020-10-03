@@ -41,7 +41,7 @@ class Create extends Component{
         FirebaseService.create(this.props.firebase.getFirestore(),
         (mensagem)=>{
             if(mensagem==='ok'){
-                console.log(`Estudante ${estudante.nome} inserido`)
+                console.log(`Estudante ${disciplina.nome} inserido`)
             }
         },
         disciplina
